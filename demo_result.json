@@ -1,0 +1,176 @@
+{
+  "feed": {
+    "author": {
+      "name": {
+        "label": "iTunes Store"
+      },
+      "uri": {
+        "label": "http://www.apple.com/itunes/"
+      }
+    },
+    "entry": [
+      {
+        "im:name": {
+          "label": "旅かえる"
+        },
+        "im:image": [
+          {
+            "label": "http://is5.mzstatic.com/image/thumb/Purple118/v4/54/20/97/542097a9-d859-5a23-6465-e7ae834ff13e/mzl.fvbafbza.png/53x53bb-85.png",
+            "attributes": {
+              "height": "53"
+            }
+          },
+          {
+            "label": "http://is2.mzstatic.com/image/thumb/Purple118/v4/54/20/97/542097a9-d859-5a23-6465-e7ae834ff13e/mzl.fvbafbza.png/75x75bb-85.png",
+            "attributes": {
+              "height": "75"
+            }
+          },
+          {
+            "label": "http://is2.mzstatic.com/image/thumb/Purple118/v4/54/20/97/542097a9-d859-5a23-6465-e7ae834ff13e/mzl.fvbafbza.png/100x100bb-85.png",
+            "attributes": {
+              "height": "100"
+            }
+          }
+        ],
+        "summary": {
+          "label": "旅かえるは旅好きのかえるを旅に送り出し\nのんびりと帰りを待つアプリです\n\nかえるに旅のもちものをしたくしてあげると\n旅の様子を「写真」でお知らせしてくれたり\n旅で手に入れた各地のめずらしい「おみやげ」を\nプレゼントしてくれます（もらえないこともあります）\n\n◆あそびかた\n1.　クローバーを収穫しよう\n2.　おみせでもちものを買い物しよう\n3.　旅のしたくをして完了！\n\nしたくが完了したら、かえるは勝手に旅立っていきます\nあとは、無事に帰ってくるのを待っていてあげましょう\n\n自由気ままなかえるとの旅を\nどうぞごゆるりとお楽しみください\n\n\n【弊社サポート】\nsupport-kaeru@hit-point.co.jp\n【サポート受付】\n土日・祝日を除く平日：10:00～17:30\n・お問い合わせいただいた後、弊社からご連絡させて頂く場合がございますので迷惑メール防止のためメールの受信設定をしている場合は、あらかじめ設定を解除、もしくはsupport-kaeru@hit-point.co.jpからのメールの受信許可をお願いいたします。\n・お問い合わせは日本語でのみ受け付けております。\n・電話でのサポートは対応しておりません。"
+        },
+        "im:price": {
+          "label": "取得",
+          "attributes": {
+            "amount": "0.00000",
+            "currency": "HKD"
+          }
+        },
+        "im:contentType": {
+          "attributes": {
+            "term": "Application",
+            "label": "應用程式"
+          }
+        },
+        "rights": {
+          "label": "© 2017 Hit-Point Co.,Ltd."
+        },
+        "title": {
+          "label": "旅かえる - Hit-Point Co., Ltd."
+        },
+        "link": {
+          "attributes": {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://itunes.apple.com/hk/app/%E6%97%85%E3%81%8B%E3%81%88%E3%82%8B/id1255032913?mt=8&uo=2"
+          }
+        },
+        "id": {
+          "label": "https://itunes.apple.com/hk/app/%E6%97%85%E3%81%8B%E3%81%88%E3%82%8B/id1255032913?mt=8&uo=2",
+          "attributes": {
+            "im:id": "1255032913",
+            "im:bundleId": "jp.co.hit-point.tabikaeru"
+          }
+        },
+        "im:artist": {
+          "label": "Hit-Point Co., Ltd.",
+          "attributes": {
+            "href": "https://itunes.apple.com/hk/developer/hit-point-co-ltd/id495637387?mt=8&uo=2"
+          }
+        },
+        "category": {
+          "attributes": {
+            "im:id": "6014",
+            "term": "Games",
+            "scheme": "https://itunes.apple.com/hk/genre/ios-%E9%81%8A%E6%88%B2/id6014?mt=8&uo=2",
+            "label": "遊戲"
+          }
+        },
+        "im:releaseDate": {
+          "label": "2017-12-05T17:09:13-07:00",
+          "attributes": {
+            "label": "2017年12月05日"
+          }
+        }
+      },
+      {
+        "im:name": {
+          "label": "十萬個冷笑話2-香港爛gag皇"
+        },
+        "im:image": [
+          {
+            "label": "http://is5.mzstatic.com/image/thumb/Purple128/v4/29/77/15/29771534-8858-5f9e-1898-963067e87e28/pr_source.jpg/53x53bb-85.png",
+            "attributes": {
+              "height": "53"
+            }
+          },
+          {
+            "label": "http://is2.mzstatic.com/image/thumb/Purple128/v4/29/77/15/29771534-8858-5f9e-1898-963067e87e28/pr_source.jpg/75x75bb-85.png",
+            "attributes": {
+              "height": "75"
+            }
+          },
+          {
+            "label": "http://is1.mzstatic.com/image/thumb/Purple128/v4/29/77/15/29771534-8858-5f9e-1898-963067e87e28/pr_source.jpg/100x100bb-85.png",
+            "attributes": {
+              "height": "100"
+            }
+          }
+        ],
+        "summary": {
+          "label": "《十萬個冷笑話2》係一款笑到冇停嘅正版授權手機遊戲，匯聚「港呢啲」港式潮語精華，運用電影分鏡將角色嘅戰鬥技能惡搞指數發揮到極致！特別加入原著作者「寒舞」同你一齊穿越時空，惡搞玩盡動漫角色！誠意邀請香港著名配音員參與聲演，趣味演繹爆笑對白，真正屬於香港人嘅版本。遊戲亦加入視頻式彈幕，俾你盡情舒壓放鬆，全服玩家一齊食住花生扯晒蝦咁笑，正皮負皮由你話事！\n【介紹返 - 千奇百趣睇到你O哂嘴】\n惡搞過百款經典角色，無論係化身狗仔嘅雷神托爾、精通百分百空手接白刃嘅李靖、得意童顏大隻佬哪吒，喺呢度都有專屬嘅爆趣情節，即刻嚟儲齊你嘅惡搞小圈子！\n\n【靚爆鏡 - 最惡搞嘅戰鬥技能】\n估佢唔到！邀請頂級電影美術團隊，運用電影分鏡制作角色動態惡搞技能，原來出招都可以咁爆笑！一幕幕抵死綴核嘅遊戲畫面，高汁+爆趣挑戰你底線，笑？你就輸一世！\n\n【港呢啲 - 香港著名配音員訓身聲演】\n港版特供！迎合香港玩家口味，營運團隊特意邀請大台配音員訓身聲演！集合高登潮文及港式潮語包你粵聽粵盞鬼，大量爛GAG植入！今時今日點止港呢啲，機會嚟喇飛雲，識玩一定係開聲玩！\n\n【咁都得 - 港式彈幕正負皮你話事】\n睇人卡關最開心！強勁嘅彈幕功能俾你即時同玩家交流卡關心得，一命通關真係太簡單！最輕鬆舒壓嘅港式彈幕俾你盡情發射，正皮負皮等你嚟定！\n\n【堅抵玩 - 創新爆趣玩法包無悶場】\n除咗感受抵死啜核嘅惡搞劇情，仲提供排位賽、天梯賽、競技場、巔峰戰等你同其它玩家一齊挑機，競逐香港爛GAG之皇，食住花生玩好GAME！"
+        },
+        "im:price": {
+          "label": "取得",
+          "attributes": {
+            "amount": "0.00000",
+            "currency": "HKD"
+          }
+        },
+        "im:contentType": {
+          "attributes": {
+            "term": "Application",
+            "label": "應用程式"
+          }
+        },
+        "rights": {
+          "label": "© playground sw2@2017"
+        },
+        "title": {
+          "label": "十萬個冷笑話2-香港爛gag皇 - KUANG HUEI CHANG"
+        },
+        "link": {
+          "attributes": {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://itunes.apple.com/hk/app/%E5%8D%81%E8%90%AC%E5%80%8B%E5%86%B7%E7%AC%91%E8%A9%B12-%E9%A6%99%E6%B8%AF%E7%88%9Bgag%E7%9A%87/id1330526623?mt=8&uo=2"
+          }
+        },
+        "id": {
+          "label": "https://itunes.apple.com/hk/app/%E5%8D%81%E8%90%AC%E5%80%8B%E5%86%B7%E7%AC%91%E8%A9%B12-%E9%A6%99%E6%B8%AF%E7%88%9Bgag%E7%9A%87/id1330526623?mt=8&uo=2",
+          "attributes": {
+            "im:id": "1330526623",
+            "im:bundleId": "com.playground.sw2.HK"
+          }
+        },
+        "im:artist": {
+          "label": "KUANG HUEI CHANG",
+          "attributes": {
+            "href": "https://itunes.apple.com/hk/developer/kuang-huei-chang/id1228028888?mt=8&uo=2"
+          }
+        },
+        "category": {
+          "attributes": {
+            "im:id": "6014",
+            "term": "Games",
+            "scheme": "https://itunes.apple.com/hk/genre/ios-%E9%81%8A%E6%88%B2/id6014?mt=8&uo=2",
+            "label": "遊戲"
+          }
+        },
+        "im:releaseDate": {
+          "label": "2018-02-01T18:40:45-07:00",
+          "attributes": {
+            "label": "2018年02月01日"
+          }
+        }
+      }
+    ]
+  }
+}
