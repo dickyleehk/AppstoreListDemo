@@ -16,7 +16,6 @@ public interface APIList {
     @GET("/hk/rss/topfreeapplications/limit=100/json")
     Call<AppList> topFree();
 
-//    @GET("/hk/lookup?id={id}")
     @GET("/hk/lookup?")
     Call<AppDetail> appDetail(@Query("id") String appId);
 

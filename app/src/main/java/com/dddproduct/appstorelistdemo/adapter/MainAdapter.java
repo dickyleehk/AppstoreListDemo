@@ -39,6 +39,10 @@ public class MainAdapter extends RecyclerView.Adapter {
     private static final int VIEW_TYPE_VERTICAL = 1;
     private static final int VIEW_TYPE_HORIZONTAL = 2;
 
+    public interface ReachEndListener{
+        void onReachEnd(int lastIndex);
+    }
+
 
     class VHLoading extends RecyclerView.ViewHolder{
         VHLoading(Context ctxt) {
@@ -111,6 +115,8 @@ public class MainAdapter extends RecyclerView.Adapter {
 
     private boolean isVertical = true;
 
+    private ReachEndListener listener;
+
     private Context ctxt;
     private List<Object> dataList, displayList;
     private String keyword;
@@ -127,6 +133,13 @@ public class MainAdapter extends RecyclerView.Adapter {
         update();
     }
 
+    //For load more feature only
+    public void addToList(List list){
+        int startPosition = this.dataList.size() - 1;
+        this.dataList.addAll(list);
+        notifyItemRangeChanged(startPosition, list.size());
+    }
+
     public String getKeyword() {
         return keyword;
     }
@@ -134,6 +147,10 @@ public class MainAdapter extends RecyclerView.Adapter {
     public void setKeyword(String keyword) {
         this.keyword = keyword;
         update();
+    }
+
+    public void setListener(ReachEndListener listener) {
+        this.listener = listener;
     }
 
     public void update(){
@@ -203,6 +220,12 @@ public class MainAdapter extends RecyclerView.Adapter {
                 bindVHHorizontal((VHHorizontal) holder, position);
                 break;
         }
+
+        if(listener != null &&
+                TextUtils.isEmpty(keyword) &&
+                position == displayList.size()-1){
+            listener.onReachEnd(position);
+        }
     }
 
     private void bindVHList(VHList holder, int position){
@@ -220,7 +243,7 @@ public class MainAdapter extends RecyclerView.Adapter {
     private void bindVHVertical(final VHVertical holder, int position){
         if(!holder.isValid || !(displayList.get(position) instanceof Entry))return;
 
-        Entry app = (Entry) displayList.get(position);
+        final Entry app = (Entry) displayList.get(position);
         holder.tvPosition.setText(Integer.toString(position));
 
         Transformation transformation;
@@ -254,18 +277,20 @@ public class MainAdapter extends RecyclerView.Adapter {
 
             @Override
             public void onFailure(Call<AppDetail> call, Throwable t) {
-                holder.tvRating.setText("Unavailable");
+                holder.tvRating.setText("-");
             }
         });
+
     }
 
     private void bindVHHorizontal(VHHorizontal holder, int position){
         if(!holder.isValid || !(displayList.get(position) instanceof Entry))return;
 
-        Entry app = (Entry) displayList.get(position);
+        final Entry app = (Entry) displayList.get(position);
         Picasso.with(ctxt).load(app.getImImage().get(2).getLabel()).transform(new RoundTransform()).into(holder.ivIcon);
         holder.tvTitle.setText(app.getImName().getLabel());
         holder.tvCategory.setText(app.getCategory().getAttributes().getLabel());
+
     }
 
     @Override
