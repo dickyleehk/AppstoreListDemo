@@ -176,7 +176,9 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.Reach
                 int min = Math.min(LOAD_MORE_NUMBER, apiResult.size() - list.size());
                 if(lastIndex == 0)min += 1; //fix for first item is Grossing list
 
-                List updateList = apiResult.subList(lastIndex, lastIndex+min);
+                int start = lastIndex == 0? 0 : lastIndex + 1;
+
+                List updateList = apiResult.subList(start, start + min);
                 list.addAll(updateList);
                 mainAdapter.addToList(updateList);
             }
