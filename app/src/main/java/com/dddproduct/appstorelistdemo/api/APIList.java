@@ -11,5 +11,8 @@ import retrofit2.http.GET;
 
 public interface APIList {
     @GET("/hk/rss/topfreeapplications/limit=100/json")
-    Call<AppList> appList();
+    Call<AppList> topFree();
+
+    @GET("/hk/rss/topgrossingapplications/limit=10/json")
+    Call<AppList> topGrossing();
 }

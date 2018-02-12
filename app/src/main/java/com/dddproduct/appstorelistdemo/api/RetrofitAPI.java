@@ -12,15 +12,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitAPI {
 
-    static RetrofitAPI self;
+    private static RetrofitAPI self;
 
     String API_DOMAIN = "https://itunes.apple.com/";
 
-    Retrofit retrofit;
-    APIList apiInterface;
+    private APIList apiInterface;
 
     private RetrofitAPI(){
-        retrofit= new Retrofit.Builder()
+        Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(API_DOMAIN)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
@@ -34,9 +33,13 @@ public class RetrofitAPI {
         return self;
     }
 
-    public void getAppList(Callback<AppList> callback){
-        Call<AppList> applist = apiInterface.appList();
-        applist.enqueue(callback);
+    public void getTop100Free(Callback<AppList> callback){
+        Call<AppList> appList = apiInterface.topFree();
+        appList.enqueue(callback);
+    }
+    public void getTop10Grossing(Callback<AppList> callback){
+        Call<AppList> appList = apiInterface.topGrossing();
+        appList.enqueue(callback);
     }
 
 }
