@@ -1,5 +1,6 @@
 package com.dddproduct.appstorelistdemo.api;
 
+import com.dddproduct.appstorelistdemo.api.gson.AppDetail;
 import com.dddproduct.appstorelistdemo.api.gson.AppList;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -39,6 +40,10 @@ public class RetrofitAPI {
     }
     public void getTop10Grossing(Callback<AppList> callback){
         Call<AppList> appList = apiInterface.topGrossing();
+        appList.enqueue(callback);
+    }
+    public void getAppDetail(String appId, Callback<AppDetail> callback){
+        Call<AppDetail> appList = apiInterface.appDetail(appId);
         appList.enqueue(callback);
     }
 

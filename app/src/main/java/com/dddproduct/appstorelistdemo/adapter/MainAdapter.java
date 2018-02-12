@@ -3,6 +3,7 @@ package com.dddproduct.appstorelistdemo.adapter;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +12,21 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.dddproduct.appstorelistdemo.R;
+import com.dddproduct.appstorelistdemo.api.RetrofitAPI;
+import com.dddproduct.appstorelistdemo.api.gson.AppDetail;
 import com.dddproduct.appstorelistdemo.api.gson.Entry;
+import com.dddproduct.appstorelistdemo.api.gson.Result;
+import com.dddproduct.appstorelistdemo.utils.CircleTransform;
+import com.dddproduct.appstorelistdemo.utils.RoundTransform;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by dickyleehk on 12/2/18.
@@ -104,25 +115,62 @@ public class MainAdapter extends RecyclerView.Adapter {
     boolean isVertical = true;
 
     private Context ctxt;
-    List<Object> list;
+    List<Object> dataList, displayList;
+
+    String keyword;
 
     public MainAdapter(Context context){
         ctxt = context;
-        list = new ArrayList<>();
+        dataList = new ArrayList<>();
+        displayList = new ArrayList<>();
     }
 
     public void setList(List list) {
-        this.list.clear();
-        this.list.addAll(list);
+        this.dataList.clear();
+        this.dataList.addAll(list);
+        update();
+    }
+
+    public String getKeyword() {
+        return keyword;
+    }
+
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
+        update();
+    }
+
+    public void update(){
+        if(TextUtils.isEmpty(keyword)){
+            displayList = dataList;
+        }else{
+            displayList = new ArrayList<>();
+            for(Object obj:dataList){
+                if(obj instanceof Entry){
+                    if(verify((Entry)obj)){
+                        displayList.add(obj);
+                    }
+                }else{
+                    displayList.add(obj);
+                }
+            }
+        }
         notifyDataSetChanged();
+    }
+
+    private boolean verify(Entry entry) {
+        return entry.getImName().getLabel().contains(keyword) ||
+                entry.getCategory().getAttributes().getLabel().contains(keyword) ||
+                entry.getImArtist().getLabel().contains(keyword) ||
+                entry.getSummary().getLabel().contains(keyword);
     }
 
     @Override
     public int getItemViewType(int position) {
-        if(list.get(position) instanceof List)
+        if(displayList.get(position) instanceof List)
             return VIEW_TYPE_LIST;
 
-        if(list.get(position) instanceof Entry)
+        if(displayList.get(position) instanceof Entry)
             return isVertical?VIEW_TYPE_VERTICAL:VIEW_TYPE_HORIZONTAL;
 
         return VIEW_TYPE_LOADING;
@@ -162,39 +210,71 @@ public class MainAdapter extends RecyclerView.Adapter {
     }
 
     private void bindVHList(VHList holder, int position){
-        if(list.get(position) instanceof List){
+        if(displayList.get(position) instanceof List){
             List<Entry> dataList = new ArrayList<>();
-            for(Object item : (List)list.get(position)){
+            for(Object item : (List) displayList.get(position)){
                 if(item instanceof Entry)
                     dataList.add((Entry) item);
             }
             holder.mainAdapter.setList(dataList);
+            holder.mainAdapter.setKeyword(keyword);
         }
     }
 
-    private void bindVHVertical(VHVertical holder, int position){
-        if(!holder.isValid || !(list.get(position) instanceof Entry))return;
+    private void bindVHVertical(final VHVertical holder, int position){
+        if(!holder.isValid || !(displayList.get(position) instanceof Entry))return;
 
-        Entry app = (Entry) list.get(position);
+        Entry app = (Entry) displayList.get(position);
         holder.tvPosition.setText(Integer.toString(position));
-        Picasso.with(ctxt).load(app.getImImage().get(2).getLabel()).into(holder.ivIcon);
+
+        Transformation transformation;
+        switch (position%2){
+            case 0:
+                transformation = new CircleTransform();
+                break;
+            default:
+            case 1:
+                transformation = new RoundTransform();
+                break;
+        }
+
+        Picasso.with(ctxt).load(app.getImImage().get(2).getLabel()).transform(transformation).into(holder.ivIcon);
         holder.tvTitle.setText(app.getImName().getLabel());
         holder.tvCategory.setText(app.getCategory().getAttributes().getLabel());
+
         holder.tvRating.setText(app.getImName().getLabel());
+        RetrofitAPI.getInstance().getAppDetail(app.getId().getAttributes().getImId(), new Callback<AppDetail>() {
+            @Override
+            public void onResponse(Call<AppDetail> call, Response<AppDetail> response) {
+                if(response.isSuccessful() &&
+                        response.body() != null &&
+                        response.body().getResultCount() > 0){
+                    Result result = response.body().getResults().get(0);
+                    holder.tvRating.setText(result.getAverageUserRatingForCurrentVersion() + " (" + result.getUserRatingCount()+")");
+                }else{
+                    onFailure(call, new Throwable("API Fail"));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AppDetail> call, Throwable t) {
+                holder.tvRating.setText("Unavailable");
+            }
+        });
     }
 
     private void bindVHHorizontal(VHHorizontal holder, int position){
-        if(!holder.isValid || !(list.get(position) instanceof Entry))return;
+        if(!holder.isValid || !(displayList.get(position) instanceof Entry))return;
 
-        Entry app = (Entry) list.get(position);
-        Picasso.with(ctxt).load(app.getImImage().get(2).getLabel()).into(holder.ivIcon);
+        Entry app = (Entry) displayList.get(position);
+        Picasso.with(ctxt).load(app.getImImage().get(2).getLabel()).transform(new RoundTransform()).into(holder.ivIcon);
         holder.tvTitle.setText(app.getImName().getLabel());
         holder.tvCategory.setText(app.getCategory().getAttributes().getLabel());
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return displayList.size();
     }
 
 }
