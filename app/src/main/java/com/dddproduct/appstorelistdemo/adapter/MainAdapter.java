@@ -77,19 +77,16 @@ public class MainAdapter extends RecyclerView.Adapter {
             super(itemView);
 
             tvPosition = (TextView) itemView.findViewById(R.id.tv_position);
-            if(isValid)isValid = tvPosition != null;
-
             tvTitle = (TextView) itemView.findViewById(R.id.tv_title);
-            if(isValid)isValid = tvTitle != null;
-
             tvCategory = (TextView) itemView.findViewById(R.id.tv_category);
-            if(isValid)isValid = tvCategory != null;
-
             tvRating = (TextView) itemView.findViewById(R.id.tv_rating);
-            if(isValid)isValid = tvRating != null;
-
             ivIcon = (ImageView) itemView.findViewById(R.id.iv_icon);
-            if(isValid)isValid = ivIcon != null;
+
+            isValid = tvPosition != null &&
+                    tvTitle != null &&
+                    tvCategory != null &&
+                    tvRating != null &&
+                    ivIcon != null;
         }
     }
     class VHHorizontal extends RecyclerView.ViewHolder{
@@ -112,12 +109,11 @@ public class MainAdapter extends RecyclerView.Adapter {
         }
     }
 
-    boolean isVertical = true;
+    private boolean isVertical = true;
 
     private Context ctxt;
-    List<Object> dataList, displayList;
-
-    String keyword;
+    private List<Object> dataList, displayList;
+    private String keyword;
 
     public MainAdapter(Context context){
         ctxt = context;
