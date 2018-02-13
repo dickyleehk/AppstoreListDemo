@@ -145,6 +145,9 @@ public class MainAdapter extends RecyclerView.Adapter {
     }
 
     public void setKeyword(String keyword) {
+        if(!TextUtils.isEmpty(keyword))
+            keyword = keyword.toLowerCase();
+
         this.keyword = keyword;
         update();
     }
@@ -172,10 +175,10 @@ public class MainAdapter extends RecyclerView.Adapter {
     }
 
     private boolean verify(Entry entry) {
-        return entry.getImName().getLabel().contains(keyword) ||
-                entry.getCategory().getAttributes().getLabel().contains(keyword) ||
-                entry.getImArtist().getLabel().contains(keyword) ||
-                entry.getSummary().getLabel().contains(keyword);
+        return entry.getImName().getLabel().toLowerCase().contains(keyword) ||
+                entry.getCategory().getAttributes().getLabel().toLowerCase().contains(keyword) ||
+                entry.getImArtist().getLabel().toLowerCase().contains(keyword) ||
+                entry.getSummary().getLabel().toLowerCase().contains(keyword);
     }
 
     @Override
